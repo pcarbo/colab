@@ -1,0 +1,217 @@
+---
+title: An R Markdown document converted from "my_first_colab_notebook.ipynb"
+output: html_document
+---
+
+<a href="https://colab.research.google.com/github/pcarbo/colab/blob/main/my_first_colab_notebook.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+```{r}
+source("myfunctions.R")
+scale.cols
+```
+
+# New Section
+
+```{r}
+cat(system('python3 -c "from google.colab import drive\ndrive.mount()"', intern=TRUE), sep='\n', wait=TRUE)
+```
+
+```{r}
+install.packages("rgl", repos = "http://cran.rstudio.com/")
+install.packages("ConsRank", repos = "http://cran.rstudio.com/")
+library("ConsRank")
+```
+
+```{r}
+getwd()
+```
+
+```{r}
+system("cat sample_data/README.md",intern = TRUE)
+```
+
+```{r}
+system("which R",intern = TRUE)
+system("R --version",intern = TRUE)
+```
+
+```{r}
+system("add-apt-repository -y ppa:marutter/rrutter")
+system("add-apt-repository -y ppa:marutter/c2d4u")
+system("apt-get update")
+system("apt install -y r-cran-rstan")
+```
+
+```{r}
+install.packages('ggmap')
+install.packages('codetools')
+```
+
+```{r}
+library("ggmap")
+```
+
+```{r}
+print('hello')
+cat("Hi, how are you?\n")
+```
+
+```{r}
+hist(rnorm(1000),n = 64)
+```
+
+```{r}
+system("ls /usr/local/lib/R/site-library/rgl/libs",intern = TRUE)
+system("ldd /usr/local/lib/R/site-library/rgl/libs/rgl.so",intern = TRUE)
+```
+
+```{r}
+options(repr.plot.width  = 3,
+        repr.plot.height = 3)
+Sys.setenv(USE_CXX14 = 1)
+library("rstan") # observe startup messages
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
+```
+
+This is the rank-1 GLM-PCA model: $x_{ij} \sim \mathrm{Pois}(\lambda_ij), \lambda_{ij} = e^{l_i f_j}$
+
+```{r}
+system("apt list --installed",intern = TRUE)
+```
+
+```{r}
+cat(system("cat /proc/cpuinfo",intern = TRUE),sep = "\n")
+cat(system("cat /proc/meminfo",intern = TRUE),sep = "\n")
+cat(system("cat /proc/version",intern = TRUE),sep = "\n")
+```
+
+```{r}
+system("apt-get install libgsl-dev",intern = TRUE)
+```
+
+```{r}
+install.packages("RcppGSL")
+```
+
+```{r}
+library(RcppGSL)
+LdFlags()
+```
+
+```{r}
+system("unzip mixsqp.zip",intern = TRUE)
+```
+
+```{r}
+system("R CMD build mixsqp",intern = TRUE)
+```
+
+```{r}
+system("R CMD INSTALL mixsqp_0.3-48.tar.gz",intern = TRUE)
+```
+
+```{r}
+system("g++ --version",intern = TRUE)
+```
+
+```{r}
+remotes::install_github("stephenslab/mixsqp",upgrade = "never",
+                        verbose = TRUE,force = TRUE)
+```
+
+```{r}
+library(mixsqp)
+```
+
+```{r}
+x <- seq(0, 2*pi, length.out=50)
+plot(x, sin(x))
+```
+
+```{r}
+stanmodelcode <- "
+data {
+    int<lower=0> N; 
+    real y[N];
+}
+
+parameters {
+    real mu; 
+
+}
+
+model {
+    target += normal_lpdf(mu | 0, 10);
+    target += normal_lpdf(y | mu, 1);
+}"
+
+y <- rnorm(20)
+dat <- list(N = 20, y = y);
+
+fit <- stan(model_code = stanmodelcode, model_name = "example",
+            data = dat, iter = 2012, chains = 8, sample_file = 'norm.csv',
+            verbose = FALSE,
+            refresh = -1)
+
+print(fit)
+```
+
+```{r}
+plot(fit)
+```
+
+```{r}
+y <- as.matrix(read.table('https://raw.github.com/wiki/stan-dev/rstan/rats.txt', header = TRUE))
+x <- c(8, 15, 22, 29, 36)
+xbar <- mean(x)
+N <- nrow(y)
+T <- ncol(y)
+rats_fit <- stan(file = 'https://raw.githubusercontent.com/stan-dev/example-models/master/bugs_examples/vol1/rats/rats.stan')
+```
+
+```{r}
+rats_fit
+```
+
+```{r}
+plot(rats_fit)
+```
+
+```{r}
+## load APA data set, full version
+data(APAFULL)
+## Emond and Mason Branch-and-Bound algorithm.
+## If the number of object is higher than 20, EMCons function may work for several minutes.
+## Use either QuickCons, DECOR, FASTcons or FASTDECOR instead
+CR=EMCons(APAFULL)
+```
+
+```{r}
+TR=tabulaterows(APAFULL)
+CR2=FASTcons(TR$X,TR$Wk,maxiter=5)
+CR3=QuickCons(TR$X,TR$Wk)
+CR4=DECOR(TR$X,TR$Wk)
+#####################################
+### load sports data set
+#data(sports)
+### FAST algorithm
+#CR=FASTcons(sports,maxiter=10)
+#####################################
+#######################################
+### load Emond and Mason data set
+#data(EMD)
+### matrix X contains rankings
+#X=EMD[,1:15]
+### vector Wk contains frequencies
+#Wk=EMD[,16]
+### QUICK algorithm
+#CR=QuickCons(X,Wk)
+#######################################
+```
+
+```{r}
+data(BU)
+polyplot(BU[,1:3],Wk=BU[,4])
+```
+
