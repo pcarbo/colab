@@ -1,0 +1,243 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.2'
+      jupytext_version: 1.14.6
+  kernelspec:
+    display_name: R
+    name: ir
+---
+
+This R Markdown file was created by running the following jupytext
+command:
+
+```
+jupytext --to Rmd -o my_first_colab_notebook_jupytext.Rmd \
+  my_first_colab_notebook.ipynb 
+```
+
+<!-- #region id="view-in-github" colab_type="text" -->
+<a href="https://colab.research.google.com/github/pcarbo/colab/blob/main/my_first_colab_notebook.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<!-- #endregion -->
+
+```{python id="Z60PpIfIeF4Z", colab={'base_uri': 'https://localhost:8080/', 'height': 189}, outputId="51304f2e-8128-4904-fc2f-80807609c909"}
+source("myfunctions.R")
+scale.cols
+```
+
+<!-- #region id="a9j3MjQpkW-1" -->
+# New Section
+<!-- #endregion -->
+
+```{python id="rCEtur7fajGn", colab={'base_uri': 'https://localhost:8080/'}, outputId="12b05bb3-42d9-4331-d4da-43ceb2fa5f71"}
+cat(system('python3 -c "from google.colab import drive\ndrive.mount()"', intern=TRUE), sep='\n', wait=TRUE)
+```
+
+```{python id="3o11KxDzyC0g"}
+install.packages("rgl", repos = "http://cran.rstudio.com/")
+install.packages("ConsRank", repos = "http://cran.rstudio.com/")
+library("ConsRank")
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 34}, id="s8bwrPk7mcWf", outputId="35385ebb-7929-4edb-caf6-aa13eb57a9b8"}
+getwd()
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 260}, id="ALodPxdFpRky", outputId="7d9f1467-a0f6-4b14-f531-50ad07576ee8"}
+system("cat sample_data/README.md",intern = TRUE)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 156}, id="OyavS-A5nxWJ", outputId="56e4be06-c184-41cd-e147-f0abb01ec68f"}
+system("which R",intern = TRUE)
+system("R --version",intern = TRUE)
+```
+
+```{python id="SPYGePw53fWq"}
+system("add-apt-repository -y ppa:marutter/rrutter")
+system("add-apt-repository -y ppa:marutter/c2d4u")
+system("apt-get update")
+system("apt install -y r-cran-rstan")
+```
+
+```{python id="1IzjHJFxv01f"}
+install.packages('ggmap')
+install.packages('codetools')
+```
+
+```{python id="sdyV67dk2vGx", colab={'base_uri': 'https://localhost:8080/', 'height': 134}, outputId="bd0aa275-1b85-452a-fbf8-bff430f9fa56"}
+library("ggmap")
+```
+
+```{python id="d_iRK89tqMfu", outputId="db375bce-8544-495d-be56-901cc53625eb", colab={'base_uri': 'https://localhost:8080/'}}
+print('hello')
+cat("Hi, how are you?\n")
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 437}, id="Lb6NtYOJm8AQ", outputId="2a308233-7048-4d8d-99bd-e7d488180272"}
+hist(rnorm(1000),n = 64)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 573}, id="Mwb3BymNrOwX", outputId="9059a9f7-9103-40f9-e226-645d03892858"}
+system("ls /usr/local/lib/R/site-library/rgl/libs",intern = TRUE)
+system("ldd /usr/local/lib/R/site-library/rgl/libs/rgl.so",intern = TRUE)
+```
+
+```{python id="qIbhtDzdwYdB"}
+options(repr.plot.width  = 3,
+        repr.plot.height = 3)
+Sys.setenv(USE_CXX14 = 1)
+library("rstan") # observe startup messages
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
+```
+
+<!-- #region id="W2ixE1Jeu9tS" -->
+This is the rank-1 GLM-PCA model: $x_{ij} \sim \mathrm{Pois}(\lambda_ij), \lambda_{ij} = e^{l_i f_j}$
+<!-- #endregion -->
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 1000}, id="dYh-5EHavrGn", outputId="e08fa4a2-c5c7-43e6-f478-7b4bef4331c0"}
+system("apt list --installed",intern = TRUE)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/'}, id="shIt9t1twzZJ", outputId="d01e0141-1dcb-4180-e81a-ece87b149769"}
+cat(system("cat /proc/cpuinfo",intern = TRUE),sep = "\n")
+cat(system("cat /proc/meminfo",intern = TRUE),sep = "\n")
+cat(system("cat /proc/version",intern = TRUE),sep = "\n")
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 590}, id="fB4oLHWyyu1f", outputId="de75e026-b753-4c79-f283-67a961114fec"}
+system("apt-get install libgsl-dev",intern = TRUE)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/'}, id="B6PkatV1zKPj", outputId="1011e817-5393-415b-95d4-313a0b744ca5"}
+install.packages("RcppGSL")
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/'}, id="MRHWxEAozyZh", outputId="6d9f0180-51b6-48be-bdd7-b86907225cc3"}
+library(RcppGSL)
+LdFlags()
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 1000}, id="-Df8SZ4I3ELF", outputId="74b7b503-d084-4060-89d6-f0bb0a5571a7"}
+system("unzip mixsqp.zip",intern = TRUE)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 104}, id="1zR6944_3LQ4", outputId="80d9e238-47e7-424c-e764-8131607d2eda"}
+system("R CMD build mixsqp",intern = TRUE)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 590}, id="7Nij52Je4aFy", outputId="e497af97-df18-4f34-b87f-234ca1dc0321"}
+system("R CMD INSTALL mixsqp_0.3-48.tar.gz",intern = TRUE)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/', 'height': 69}, id="AoPDmxSz1DMj", outputId="a89a44ec-7aa0-46ea-8ce5-b15e2a978812"}
+system("g++ --version",intern = TRUE)
+```
+
+```{python colab={'base_uri': 'https://localhost:8080/'}, id="qa0LIzrz0XtW", outputId="40e3f85e-1c8e-450e-9eeb-0eef12a2ca76"}
+remotes::install_github("stephenslab/mixsqp",upgrade = "never",
+                        verbose = TRUE,force = TRUE)
+```
+
+```{python id="IVZel4yl2Gsr"}
+library(mixsqp)
+```
+
+```{python id="xLlQFtlPxD5j"}
+x <- seq(0, 2*pi, length.out=50)
+plot(x, sin(x))
+```
+
+```{python id="lxBXXzeIx6aA"}
+stanmodelcode <- "
+data {
+    int<lower=0> N; 
+    real y[N];
+}
+
+parameters {
+    real mu; 
+
+}
+
+model {
+    target += normal_lpdf(mu | 0, 10);
+    target += normal_lpdf(y | mu, 1);
+}"
+
+y <- rnorm(20)
+dat <- list(N = 20, y = y);
+
+fit <- stan(model_code = stanmodelcode, model_name = "example",
+            data = dat, iter = 2012, chains = 8, sample_file = 'norm.csv',
+            verbose = FALSE,
+            refresh = -1)
+
+print(fit)
+```
+
+```{python id="Vmo1YXVcx91I"}
+plot(fit)
+```
+
+```{python id="0ocs9zTCx-Sw"}
+y <- as.matrix(read.table('https://raw.github.com/wiki/stan-dev/rstan/rats.txt', header = TRUE))
+x <- c(8, 15, 22, 29, 36)
+xbar <- mean(x)
+N <- nrow(y)
+T <- ncol(y)
+rats_fit <- stan(file = 'https://raw.githubusercontent.com/stan-dev/example-models/master/bugs_examples/vol1/rats/rats.stan')
+
+```
+
+```{python id="HrED9oZSx_ph"}
+rats_fit
+```
+
+```{python id="c4HysAnzyA_p"}
+plot(rats_fit)
+```
+
+```{python id="ypXiaqB6jKRh"}
+## load APA data set, full version
+data(APAFULL)
+## Emond and Mason Branch-and-Bound algorithm.
+## If the number of object is higher than 20, EMCons function may work for several minutes.
+## Use either QuickCons, DECOR, FASTcons or FASTDECOR instead
+CR=EMCons(APAFULL)
+```
+
+```{python id="uaE0kZ0vkqms"}
+TR=tabulaterows(APAFULL)
+CR2=FASTcons(TR$X,TR$Wk,maxiter=5)
+CR3=QuickCons(TR$X,TR$Wk)
+CR4=DECOR(TR$X,TR$Wk)
+#####################################
+### load sports data set
+#data(sports)
+### FAST algorithm
+#CR=FASTcons(sports,maxiter=10)
+#####################################
+#######################################
+### load Emond and Mason data set
+#data(EMD)
+### matrix X contains rankings
+#X=EMD[,1:15]
+### vector Wk contains frequencies
+#Wk=EMD[,16]
+### QUICK algorithm
+#CR=QuickCons(X,Wk)
+#######################################
+```
+
+```{python id="YmCDzKEpkxgc"}
+data(BU)
+polyplot(BU[,1:3],Wk=BU[,4])
+```
+
+```{python id="IS3VN3qamf20"}
+
+```
